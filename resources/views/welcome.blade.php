@@ -18,12 +18,13 @@
                         <div class="single-product-item">
                             <div class="product-image">
                                 <a href="/product/{{ $item->id }}">
-                                    <img src="{{ url($item->imgepath) }}"
+                                    <img src="{{ url((string) $item->imgepath) }}"
                                     style="max-height:250px !important; min-height:250px!important;"
                                         alt=""></a>
                             </div>
                             <h3>{{ $item->name }}</h3>
                             <p>{{ $item->descrebtion }}</p>
+                            <a href="/product/{{ $item->id }}" class="btn btn-info mt-2">منتجات هذا القسم</a>
                         </div>
                     </div>
                 @endforeach
