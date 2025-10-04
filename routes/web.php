@@ -7,9 +7,9 @@ use App\Models\category;
 use App\Models\product;
 
 Route::get('/', function () {
-    $result =  category::all();
+    $categories =  category::all();
 
-    return view('welcome', ['categories' => $result]);
+    return view('welcome', ['categories' => $categories]);
 });
 
 
@@ -20,8 +20,8 @@ Route::get('/product/{catid?}', function ($catid = null) {
          return view('product', ['products' => $result]);
        
     } else {
-        $result = product::all();
-         return view('product', ['products' => $result]);
+        $products = product::all();
+         return view('product', ['products' => $products]);
     }
   
 });
@@ -29,5 +29,7 @@ Route::get('/product/{catid?}', function ($catid = null) {
 
 
 Route::get('/category', function () {
-    return view('category');
+     $categories =  category::all();
+     $products =product::all();
+    return view('category', ['categories' => $categories, 'products' => $products]);
 });
