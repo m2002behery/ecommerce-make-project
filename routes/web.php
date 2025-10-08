@@ -15,26 +15,9 @@ Route::get('/product/{catid?}', [firstController::class, 'getcategoryproducts'])
 
 Route::get( '/category', [firstController::class, 'getallcategorywithproduct']);
 
-Route::get('/addproduct', [productcontroller::class, 'addproduct']);
-
-Route::get('/storeproduct', function (Request $request) {
-
-     $request->validate([
-        'name' => ['required', 'unique:products','max:255'],
-        
-        // 'image' => '['required',
-        'quantity' => 'required',
-        'price' => 'required',
-     ]);
-
-   $newproduct = new product();
-   $newproduct->name = $request->input('name');
-   $newproduct->description = $request->input('description');
-    // $newproduct->image = $request->input('image');
-    $newproduct->quantity = $request->input('quantity');
-    $newproduct->price = $request->input('price');
-    // $newproduct->category_id = $request->input('category_id');
-    $newproduct->save();
-    return redirect('/addproduct');
-
+Route::get('/addproduct', function() {
+   $categories = category::all();
+   return view('addproduct', compact('categories'));
 });
+
+Route::post('/storeproduct', [productcontroller::class, 'storeproduct']);

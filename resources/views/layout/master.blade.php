@@ -68,6 +68,7 @@
 								</li>
 								<li><a href="/category">category</a></li>
                                 <li><a href="/product">product</a></li>
+								  <li><a href="/addproduct">addproduct</a></li>
 								<li><a href="#">Pages</a>
 									<ul class="sub-menu">
 										<li><a href="404.html">404 page</a></li>
